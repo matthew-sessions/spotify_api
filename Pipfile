@@ -6,11 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+python-dotenv = "*"
 flask = "*"
 spotipy = "*"
 pandas = "*"
 numpy = "*"
-gunicorn = "*"
+python-decouple = "*"
+psycopg2-binary = "*"
+sklearn = "*"
 
 [requires]
 python_version = "3.7"

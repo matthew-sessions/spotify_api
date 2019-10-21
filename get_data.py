@@ -2,11 +2,16 @@ import spotipy
 import spotipy.util as util
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy.oauth2 as oauth2
+import os
+from decouple import config
+import pandas as pd
 
+CLIENT_ID_var = config("CLIENT_ID")
+CLIENT_SECRET_var = config("CLIENT_SECRET")
 
 def get_songs(song):
-    CLIENT_ID = "2f444856f43c47f6ba712993205ae254"
-    CLIENT_SECRET = "9757ea527ba14afc974f8c3ecb09458f"
+    CLIENT_ID = CLIENT_ID_var
+    CLIENT_SECRET = CLIENT_SECRET_var
 
     credentials = oauth2.SpotifyClientCredentials(
             client_id=CLIENT_ID,
@@ -23,8 +28,8 @@ def get_songs(song):
     return(tracks)
 
 def get_features(id):
-    CLIENT_ID = "2f444856f43c47f6ba712993205ae254"
-    CLIENT_SECRET = "9757ea527ba14afc974f8c3ecb09458f"
+    CLIENT_ID = CLIENT_ID_var
+    CLIENT_SECRET = CLIENT_SECRET_var
 
     credentials = oauth2.SpotifyClientCredentials(
             client_id=CLIENT_ID,
@@ -41,3 +46,5 @@ def get_features(id):
                 'loudness':i['loudness'], 'mode':i['mode'], 'speechiness':i['speechiness'], 'tempo':i['tempo'],
                 'time_signature':i['time_signature'], 'valence':i['valence'], 'popularity':pop['popularity']}
     return(feat_dict)
+
+    
