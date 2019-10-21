@@ -35,10 +35,15 @@ def recommendations(value):
     return(jsonify(five_recs))
 
 
-@app.route('/embed')
-def embed():
-
-    return(render_template('embed.html'))
+@app.route('/embed/<value>')
+def embed(value):
+    recs = Five_recs(value)
+    all_recs = recs.get_100()
+    feature_df = recs.get_all_features(all_recs)
+    target_song = recs.get_all_features(value)
+    five_recs_df = recs.top_recs(feature_df, target_song)
+    five_recs = recs.feedback(five_recs_df)
+    return(render_template('embed.html', five_recs=five_recs))
 
 if __name__ == '__main__':
     app.run()

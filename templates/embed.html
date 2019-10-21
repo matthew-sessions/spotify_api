@@ -5,6 +5,14 @@
     <title></title>
   </head>
   <body>
-    <iframe src="https://embed.spotify.com/?uri=spotify:track:4aX4Oycsk1fhHIee1zqsDe" width="400px" height="100px"></iframe>
+    <ul>
+      {% for i in five_recs %}
+      <li>
+        <p>{{i['artist']}}</p>
+        <p>{{i['song_name']}}</p>
+        <iframe src="https://embed.spotify.com/?uri={{i['uri']}}" width="400px" height="100px"></iframe>
+      </li>
+      {% endfor %}
+    </ul>
   </body>
 </html>
